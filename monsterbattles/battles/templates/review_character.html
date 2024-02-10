@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Review Your Character</title>
+</head>
+
+<body>
+    <h1>Review Your Character</h1>
+    <div>
+        <h2>{{ character_details.name }}</h2>
+        <p><strong>Description:</strong> {{ character_details.description }}</p>
+        <p><strong>Attack 1:</strong> {{ character_details.attack_1 }}</p>
+        <p><strong>Attack 1 Description:</strong> {{ character_details.attack_1_description }}</p>
+        <p><strong>Attack 2:</strong> {{ character_details.attack_2 }}</p>
+        <p><strong>Attack 2 Description:</strong> {{ character_details.attack_2_description }}</p>
+        <p><strong>Attack 3:</strong> {{ character_details.attack_3 }}</p>
+        <p><strong>Attack 3 Description:</strong> {{ character_details.attack_3_description }}</p>
+        <p><strong>Strength:</strong> {{ character_details.strength }}</p>
+        <p><strong>Weakness:</strong> {{ character_details.weakness }}</p>
+        <img src="{{ image_url }}" alt="Character Image" style="width:300px;">
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" name="accept" value="Accept Character">
+        <input type="submit" name="regenerate" value="Try Again">
+    </form>
+</body>
+
+</html>

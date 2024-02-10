@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arena Battle</title>
+</head>
+
+<body>
+    <h1>Arena</h1>
+    <div style="display: flex; justify-content: space-between;">
+        <!-- Monster 1 -->
+        <div>
+            <h2>{{ monster1.name }} (Health: {{ arena_state.monster1_health }})</h2>
+            <img src="{{ monster1.image_url }}" alt="Monster 1 Image" style="width: 100px;">
+            {% if arena_state.turn == 1 %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="attacker_id" value="{{ monster1.id }}">
+                <button type="submit" name="attack" value="attack_1">{{ monster1.attack_1 }}</button>
+                <button type="submit" name="attack" value="attack_2">{{ monster1.attack_2 }}</button>
+                <button type="submit" name="attack" value="attack_3">{{ monster1.attack_3 }}</button>
+            </form>
+            {% endif %}
+        </div>
+
+        <!-- Monster 2 -->
+        <div>
+            <h2>{{ monster2.name }} (Health: {{ arena_state.monster2_health }})</h2>
+            <img src="{{ monster2.image_url }}" alt="Monster 2 Image" style="width: 100px;">
+            {% if arena_state.turn == 2 %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="attacker_id" value="{{ monster2.id }}">
+                <button type="submit" name="attack" value="attack_1">{{ monster2.attack_1 }}</button>
+                <button type="submit" name="attack" value="attack_2">{{ monster2.attack_2 }}</button>
+                <button type="submit" name="attack" value="attack_3">{{ monster2.attack_3 }}</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Display the result of the last attack -->
+    {% if arena_state.last_attack_description %}
+    <div style="margin-top: 20px; text-align: center;">
+        <p><strong>Last Attack:</strong> {{ arena_state.last_attack_description }}</p>
+        <!-- <img src="{{ arena_state.last_attack_image_url }}" alt="Attack Image" style="max-width: 300px;"> -->
+    </div>
+    {% endif %}
+</body>
+
+</html>

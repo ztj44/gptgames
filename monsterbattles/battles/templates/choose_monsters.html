@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Your Monsters</title>
+</head>
+
+<body>
+    <h1>Choose Two Monsters for the Arena</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for monster in monsters %}
+        <input type="radio" id="monster{{monster.id}}1" name="monster1" value="{{monster.id}}">
+        <label for="monster{{monster.id}}1">{{ monster.name }}</label><br>
+        <input type="radio" id="monster{{monster.id}}2" name="monster2" value="{{monster.id}}">
+        <label for="monster{{monster.id}}2">{{ monster.name }}</label><br>
+        {% endfor %}
+        <input type="submit" value="Go to Arena">
+    </form>
+</body>
+
+</html>

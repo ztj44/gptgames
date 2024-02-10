@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+</head>
+
+<body>
+    <h1>Game Over</h1>
+    <div>
+        <h2>Congratulations, {{ winner.name }}!</h2>
+        <p>You have triumphed over {{ loser.name }} in the arena.</p>
+        <img src="{{ winner.image_url }}" alt="Winner Image" style="width: 200px;">
+        <h3>Defeated:</h3>
+        <img src="{{ loser.image_url }}" alt="Loser Image" style="width: 200px;">
+    </div>
+    <a href="{% url 'choose_monsters' %}">Play Again</a>
+</body>
+
+</html>
